@@ -45,3 +45,13 @@ go-webapi/
 Open the terminal and run the command:         
 
 go run cmd/main.go
+
+
+go-webapi/
+   internal/
+        comment/
+                comment.go
+
+struct construction:
+https://go.dev/doc/effective_go#composite_literals
+
