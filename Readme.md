@@ -75,3 +75,11 @@ Create Dockerfile
 Create docker-compose.yml file
 
         docker-compose up
+
+## Create Taskfile.yml
+
+Create Taskfile.yml file
+
+        task build
+        task test
+        
