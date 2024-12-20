@@ -61,3 +61,6 @@ Add error handling
 
 Add Implementation placeholder
 
+Propagating context (Trace ID and Request ID), that is helpful when debugging multiple services
+
+
