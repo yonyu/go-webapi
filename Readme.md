@@ -55,3 +55,9 @@ go-webapi/
 struct construction:
 https://go.dev/doc/effective_go#composite_literals
 
+Decouple the concrete implementation from database by returning struct
+
+Add error handling
+
+Add Implementation placeholder
+

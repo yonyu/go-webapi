@@ -2,7 +2,13 @@ package comment
 
 import (
 	"context"
+	"errors"
 	"fmt"
+)
+
+var (
+	ErrFetchingComment = errors.New("Failed to fetch comment by ID")
+	ErrNotImplemented  = errors.New("Not implemented")
 )
 
 type Comment struct {
@@ -30,8 +36,21 @@ func (s *Service) GetComment(ctx context.Context, ID string) (Comment, error) {
 	fmt.Println("Retrieve a comment")
 	cmt, err := s.Store.GetComment(ctx, ID)
 	if err != nil {
-		return Comment{}, err
+		fmt.Println(err) // Original error
+		return Comment{}, ErrFetchingComment
 	}
 
 	return cmt, nil
+}
+
+func (s *Service) UpdateComment(ctx context.Context, cmt Comment) error {
+	return ErrNotImplemented
+}
+
+func (s *Service) DeleteComment(ctx context.Context, id string) error {
+	return ErrNotImplemented
+}
+
+func (s *Service) CreateComment(ctx context.Context, cmt Comment) (Comment, error) {
+	return Comment{}, ErrNotImplemented
 }
