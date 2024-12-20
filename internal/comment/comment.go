@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	ErrFetchingComment = errors.New("Failed to fetch comment by ID")
-	ErrNotImplemented  = errors.New("Not implemented")
+	ErrFetchingComment = errors.New("failed to fetch comment by ID")
+	ErrNotImplemented  = errors.New("not implemented")
 )
 
 type Comment struct {

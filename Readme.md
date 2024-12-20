@@ -70,4 +70,8 @@ Create Dockerfile
         docker build -t go-webapi .
         docker run go-webapi
 
+## Docker compose
 
+Create docker-compose.yml file
+
+        docker-compose up
