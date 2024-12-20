@@ -12,14 +12,26 @@ type Comment struct {
 	Author string
 }
 
-// The struct which all our logic will be built upon
-type Service struct{}
+// All the methods the service needs in order to operate
+type Store interface {
+	GetComment(context.Context, string) (Comment, error)
+}
 
-func NewService() *Service {
-	return &Service{}
+// The struct which all our logic will be built uon top of
+type Service struct {
+	Store Store
+}
+
+func NewService(store Store) *Service {
+	return &Service{Store: store}
 }
 
 func (s *Service) GetComment(ctx context.Context, ID string) (Comment, error) {
 	fmt.Println("Retrieve a comment")
-	return Comment{}, nil
+	cmt, err := s.Store.GetComment(ctx, ID)
+	if err != nil {
+		return Comment{}, err
+	}
+
+	return cmt, nil
 }
