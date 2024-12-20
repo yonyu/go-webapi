@@ -63,4 +63,11 @@ Add Implementation placeholder
 
 Propagating context (Trace ID and Request ID), that is helpful when debugging multiple services
 
+## Dockerizing the app
+
+Create Dockerfile
+
+        docker build -t go-webapi .
+        docker run go-webapi
+
 
