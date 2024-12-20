@@ -82,4 +82,10 @@ Create Taskfile.yml file
 
         task build
         task test
+
+## Connecting to database
+
+        go get github.com/jmoiron/sqlx github.com/lib/pq
+
+        task run
         
