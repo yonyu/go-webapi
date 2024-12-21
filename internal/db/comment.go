@@ -8,7 +8,7 @@ import (
 	"github.com/yonyu/go-webapi/internal/domain"
 )
 
-// We have this type to handle null value and achieve better separation
+// CommentRow - We have this type to handle null value and achieve better separation
 type CommentRow struct {
 	ID     string
 	Slug   sql.NullString
