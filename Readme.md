@@ -127,3 +127,7 @@ another terminal:
         \q
         exit
         
+## Rename internal/comment/ to internal/domain/ 
+
+Corresponding refactoring
+

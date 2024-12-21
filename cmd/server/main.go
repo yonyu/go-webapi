@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/yonyu/go-webapi/internal/comment"
 	"github.com/yonyu/go-webapi/internal/db"
+	"github.com/yonyu/go-webapi/internal/domain"
 )
 
 // Run - is going to be responsible for the instantiation
@@ -25,7 +25,7 @@ func Run() error {
 	}
 	fmt.Println("Successfully connected and pinged the database")
 
-	commentService := comment.NewService(db)
+	commentService := domain.NewService(db)
 	fmt.Println(commentService.GetComment(
 		context.Background(),
 		"84f279ee-5aef-4ddb-8ae7-0d561a7944b2",

@@ -1,4 +1,4 @@
-package comment
+package domain
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	ErrFetchingComment = errors.New("failed to fetch comment by ID")
+	ErrFetchingComment = errors.New("failed to fetch domain by ID")
 	ErrNotImplemented  = errors.New("not implemented")
 )
 
@@ -33,7 +33,7 @@ func NewService(store Store) *Service {
 }
 
 func (s *Service) GetComment(ctx context.Context, ID string) (Comment, error) {
-	fmt.Println("Retrieve a comment")
+	fmt.Println("Retrieve a domain")
 
 	//ctx = context.WithValue(ctx, "request_id", "unique-string")
 	//fmt.Println(ctx.Value("request-id"))

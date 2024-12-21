@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/yonyu/go-webapi/internal/comment"
+	"github.com/yonyu/go-webapi/internal/domain"
 )
 
 // We have this type to handle null value and achieve better separation
@@ -16,8 +16,8 @@ type CommentRow struct {
 	Body   sql.NullString
 }
 
-func convertCommentRowToComment(c CommentRow) comment.Comment {
-	return comment.Comment{
+func convertCommentRowToComment(c CommentRow) domain.Comment {
+	return domain.Comment{
 		ID:     c.ID,
 		Slug:   c.Slug.String,
 		Body:   c.Body.String,
@@ -25,7 +25,7 @@ func convertCommentRowToComment(c CommentRow) comment.Comment {
 	}
 }
 
-func (d *Database) GetComment(ctx context.Context, uuid string) (comment.Comment, error) {
+func (d *Database) GetComment(ctx context.Context, uuid string) (domain.Comment, error) {
 	var commentRow CommentRow
 
 	row := d.Client.QueryRowContext(
@@ -38,7 +38,7 @@ func (d *Database) GetComment(ctx context.Context, uuid string) (comment.Comment
 
 	err := row.Scan(&commentRow.ID, &commentRow.Slug, &commentRow.Body, &commentRow.Author)
 	if err != nil {
-		return comment.Comment{}, fmt.Errorf("error fetching the comment by uuid: %w", err)
+		return domain.Comment{}, fmt.Errorf("error fetching the domain by uuid: %w", err)
 	}
 
 	return convertCommentRowToComment(commentRow), nil
