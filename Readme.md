@@ -88,4 +88,13 @@ Create Taskfile.yml file
         go get github.com/jmoiron/sqlx github.com/lib/pq
 
         task run
+
+## Migrating the database
+
+        go get github.com/golang-migrate/migrate/v4
+
+to remove the pack by go get:
+
+        go clean -i github.com/golang-migrate/migrate/v4
+
         

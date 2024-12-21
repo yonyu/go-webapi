@@ -1,7 +1,6 @@
 package main
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/yonyu/go-webapi/internal/db"
@@ -18,7 +17,8 @@ func Run() error {
 		return err
 	}
 
-	if err := db.Ping(context.Background()); err != nil {
+	if err := db.MigrateDB(); err != nil {
+		fmt.Println("Failed to migrate the database")
 		return err
 	}
 	fmt.Println("Successfully connected and pinged the database")
