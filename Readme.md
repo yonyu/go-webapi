@@ -97,4 +97,17 @@ to remove the pack by go get:
 
         go clean -i github.com/golang-migrate/migrate/v4
 
-        
+Step 1. create dbmigration.go and make other changes
+
+Step 2. create migration SQL scripts
+
+        task run
+
+Open a new terminal:
+
+        docker ps
+        docker exec -it 95f8c33edaf4 bash
+        psql -U postgres
+        \dt
+        \d+ comments;
+
