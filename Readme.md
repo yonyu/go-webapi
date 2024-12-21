@@ -127,9 +127,24 @@ another terminal:
         \q
         exit
         
-## Rename internal/comment/ to internal/domain/ 
+### Rename internal/comment/ to internal/domain/ 
 
 Corresponding refactoring
 
-## Rename internal/db/comment.go to internal/db/comment_repository.go
+### Rename internal/db/comment.go to internal/db/comment_repository.go
 
+Rename internal/db/ to internal/database/
+
+Rename internal/db/db.go to internal/database/database.go
+
+
+Step 3: implement other database accesses
+
+        go get github.com/satori/go.uuid
+
+        task run
+
+in a new terminal:
+        docker exec -it 95f8c33edaf4 bash
+        psql -U postgres
+        select * from comments;

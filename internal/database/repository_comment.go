@@ -44,3 +44,30 @@ func (d *Database) GetComment(ctx context.Context, uuid string) (domain.Comment,
 
 	return convertCommentRowToComment(commentRow), nil
 }
+
+func (d *Database) PostComment(ctx context.Context, comment domain.Comment) (domain.Comment, error) {
+	comment.ID = uuid.NewV4().String()
+	commentRow := CommentRow{
+		ID:     comment.ID,
+		Slug:   sql.NullString{String: comment.Slug, Valid: true},
+		Author: sql.NullString{String: comment.Author, Valid: true},
+		Body:   sql.NullString{String: comment.Body, Valid: true},
+	}
+	rows, err := d.Client.NamedQueryContext(
+		ctx,
+		`INSERT INTO comments (id, slug, author, body)
+		VALUES
+		(:id, :slug, :author, :body)`,
+		commentRow,
+	)
+
+	if err != nil {
+		return domain.Comment{}, fmt.Errorf("failied to insert comment: %w", err)
+	}
+
+	if err := rows.Close(); err != nil {
+		return domain.Comment{}, fmt.Errorf("failed to close rows: %w", err)
+	}
+
+	return comment, nil
+}
