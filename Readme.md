@@ -166,4 +166,10 @@ Scaffolding handler
 
         go get github.com/gorilla/mux
 
+        task run
+
+Launch a zsh terminal:
+
+        curl http://localhost:8080/hello
+
         

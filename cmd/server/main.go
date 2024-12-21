@@ -1,11 +1,11 @@
 package main
 
 import (
-	"context"
 	"fmt"
 
 	"github.com/yonyu/go-webapi/internal/database"
 	"github.com/yonyu/go-webapi/internal/domain"
+	transportHttp "github.com/yonyu/go-webapi/internal/transport/http"
 )
 
 // Run - is going to be responsible for the instantiation
@@ -27,20 +27,10 @@ func Run() error {
 
 	commentService := domain.NewService(dbCurrent)
 
-	commentService.PostComment(
-		context.Background(),
-		domain.Comment{
-			ID:     "095263fc-aacf-45e5-9b72-24926df586b9",
-			Slug:   "Manual-test",
-			Author: "John Smith",
-			Body:   "Hello World",
-		},
-	)
-
-	fmt.Println(commentService.GetComment(
-		context.Background(),
-		"84f279ee-5aef-4ddb-8ae7-0d561a7944b2",
-	))
+	httpHandler := transportHttp.NewHandler(commentService)
+	if err := httpHandler.Serve(); err != nil {
+		return err
+	}
 
 	return nil
 }
