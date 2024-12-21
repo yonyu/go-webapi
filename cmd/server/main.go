@@ -1,8 +1,10 @@
 package main
 
 import (
+	"context"
 	"fmt"
 
+	"github.com/yonyu/go-webapi/internal/comment"
 	"github.com/yonyu/go-webapi/internal/db"
 )
 
@@ -22,6 +24,12 @@ func Run() error {
 		return err
 	}
 	fmt.Println("Successfully connected and pinged the database")
+
+	commentService := comment.NewService(db)
+	fmt.Println(commentService.GetComment(
+		context.Background(),
+		"84f279ee-5aef-4ddb-8ae7-0d561a7944b2",
+	))
 
 	return nil
 }

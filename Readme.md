@@ -111,3 +111,19 @@ Open a new terminal:
         \dt
         \d+ comments;
 
+## Implement database package
+
+Step 1: Created comment.go
+
+Step 2: 
+        task run
+
+another terminal:
+        docker ps
+        docker exec -it 95f8c33edaf4 bash
+        psql -U postgres
+        insert into comments (id) values('84f279ee-5aef-4ddb-8ae7-0d561a7944b2');
+        select * from comments;
+        \q
+        exit
+        
