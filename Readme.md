@@ -131,3 +131,5 @@ another terminal:
 
 Corresponding refactoring
 
+## Rename internal/db/comment.go to internal/db/comment_repository.go
+
