@@ -148,3 +148,11 @@ in a new terminal:
         docker exec -it 95f8c33edaf4 bash
         psql -U postgres
         select * from comments;
+        \q
+        exit
+
+## Implement Delete and Updateoperations
+
+DeleteComment
+
+UpdateComment
