@@ -156,3 +156,11 @@ in a new terminal:
 DeleteComment
 
 UpdateComment
+
+
+## Create the transport layer
+
+Create internal/transport/http/handler.go
+
+Scaffolding handler
+
