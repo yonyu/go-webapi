@@ -1,4 +1,4 @@
-package db
+package database
 
 import (
 	"context"
@@ -14,7 +14,6 @@ type Database struct {
 }
 
 func NewDatabase() (*Database, error) {
-
 	connectionString := fmt.Sprintf(
 		"host=%s port=%s user=%s dbname=%s password=%s sslmode=%s",
 		os.Getenv("DB_HOST"),
@@ -25,13 +24,13 @@ func NewDatabase() (*Database, error) {
 		os.Getenv("SSL_MODE"),
 	)
 
-	dbConn, err := sqlx.Connect("postgres", connectionString)
+	dbClient, err := sqlx.Connect("postgres", connectionString)
 	if err != nil {
 		return &Database{}, err
 	}
 
 	return &Database{
-		Client: dbConn,
+		Client: dbClient,
 	}, nil
 }
 

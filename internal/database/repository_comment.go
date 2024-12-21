@@ -1,10 +1,11 @@
-package db
+package database
 
 import (
 	"context"
 	"database/sql"
 	"fmt"
 
+	"github.com/satori/go.uuid"
 	"github.com/yonyu/go-webapi/internal/domain"
 )
 
