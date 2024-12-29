@@ -89,7 +89,7 @@ Create Taskfile.yml file
 
         task run
 
-## Migrating the database
+## [Migrating the database](https://github.com/golang-migrate/migrate)
 
         go get github.com/golang-migrate/migrate/v4
 
@@ -158,7 +158,7 @@ DeleteComment
 UpdateComment
 
 
-## Create the transport layer
+## Create the transport layer (containing the logic of transport)
 
 Create internal/transport/http/handler.go
 
@@ -172,4 +172,8 @@ Launch a zsh terminal:
 
         curl http://localhost:8080/hello
 
-        
+### Gracefully shutdown
+
+Run Server.ListenAndServe() in a Go routine.
+The main routine is blocked until the channel receives a signal.
+
