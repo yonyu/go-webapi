@@ -218,3 +218,22 @@ Implement DeleteComment()
 
         curl --location --request DELETE 'http://localhost:8080/api/v1/comment/2415b52e-3903-4c94-9bc4-4cef28fcf5aa'
 
+
+### Versioning Api endpoint
+
+  For breaking changes, create a new version of the endpoint. For example:
+
+        h.Router.HandleFunc("/api/v2/comment", h.PostCommentV2).Methods("POST")
+
+### Implementing middleware
+
+Create a file internal/transport/http/middleware.go
+
+        curl --location --request POST 'http://localhost:8080/api/v1/comment' \
+        --header 'Content-Type: application/json' -v\
+        --data-raw '{
+                "slug": "hello",
+                "body": "body",
+                "author": "me"
+        }'
+
