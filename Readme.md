@@ -177,3 +177,44 @@ Launch a zsh terminal:
 Run Server.ListenAndServe() in a Go routine.
 The main routine is blocked until the channel receives a signal.
 
+### Implement the handler function
+
+Create transport/http/comment.go
+
+        type Store interface {
+                GetComment(context.Context, string) (Comment, error)
+                PostComment(context.Context, Comment) (Comment, error)
+                DeleteComment(context.Context, string) error
+                UpdateComment(context.Context, string, Comment) (Comment, error)
+        }
+
+Implement PostComment()
+
+in bash shell:
+
+        task run
+
+in zsh:
+
+        curl --location --request POST 'http://localhost:8080/api/v1/comment' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+                "slug": "hello",
+                "body": "body",
+                "author": "me"
+        }'
+
+Implement GetComment()
+
+        curl --location --request GET 'http://localhost:8080/api/v1/comment/2415b52e-3903-4c94-9bc4-4cef28fcf5aa'
+
+Implment UpdateComment()
+
+        curl --location --request PUT 'http://localhost:8080/api/v1/comment/2415b52e-3903-4c94-9bc4-4cef28fcf5aa' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{ "Slug": "/testing-put", "Body": "body", "Author": "Yong" }'
+
+Implement DeleteComment()
+
+        curl --location --request DELETE 'http://localhost:8080/api/v1/comment/2415b52e-3903-4c94-9bc4-4cef28fcf5aa'
+

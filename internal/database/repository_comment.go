@@ -86,7 +86,7 @@ func (d *Database) DeleteComment(ctx context.Context, id string) error {
 
 func (d *Database) UpdateComment(ctx context.Context, id string, comment domain.Comment) (domain.Comment, error) {
 	commentRow := CommentRow{
-		ID:     comment.ID,
+		ID:     id,
 		Slug:   sql.NullString{String: comment.Slug, Valid: true},
 		Author: sql.NullString{String: comment.Author, Valid: true},
 		Body:   sql.NullString{String: comment.Body, Valid: true},
@@ -97,7 +97,7 @@ func (d *Database) UpdateComment(ctx context.Context, id string, comment domain.
 		`UPDATE comments SET 
 		slug = :slug,
 		author = :author,
-		body = :body,
+		body = :body
 		WHERE id = :id`,
 		commentRow,
 	)
