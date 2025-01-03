@@ -237,3 +237,22 @@ Create a file internal/transport/http/middleware.go
                 "author": "me"
         }'
 
+
+Handling error with middleware:
+
+get request got the following error when using a non-existing comment ID:
+
+        comments-rest-api  | Retrieve a domain
+        comments-rest-api  | error fetching the domain by uuid: sql: no rows in result set
+        comments-rest-api  | 2024/12/30 05:22:24 failed to fetch domain by ID
+
+
+Logging middleware
+
+        go get github.com/sirupsen/logrus
+
+        to test:
+
+        task run
+        http://localhost:8080/api/v1/comment/2415b52e-3903-4c94-9bc4-4cef28fcf5aa
+
