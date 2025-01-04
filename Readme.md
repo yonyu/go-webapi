@@ -256,3 +256,8 @@ Logging middleware
         task run
         http://localhost:8080/api/v1/comment/2415b52e-3903-4c94-9bc4-4cef28fcf5aa
 
+
+Timeout middle
+
+  Apply and implement a timeout middleware
+  
