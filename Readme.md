@@ -261,3 +261,9 @@ Timeout middle
 
   Apply and implement a timeout middleware
   
+
+Request validation
+
+https://github.com/go-playground/validator
+
+        go get github.com/go-playground/validator/v10
