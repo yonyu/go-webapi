@@ -267,3 +267,32 @@ Request validation
 https://github.com/go-playground/validator
 
         go get github.com/go-playground/validator/v10
+
+        
+## Tesing the services
+
+### Overview
+
+First to test the database layer
+
+Then test the Service layer (domain)
+  
+  mock tests
+
+Finally, test the Transport layer
+
+### Integration tests
+
+1. The database layer
+
+internal/database/comment_test.go
+
+    go get github.com/stretchr/testify/assert
+
+    go test ./... -v
+    go test -tags=integration ./... -v
+
+To test
+
+    task integration-test
+
