@@ -260,4 +260,51 @@ Logging middleware
 Timeout middle
 
   Apply and implement a timeout middleware
-  
+
+
+Implement JWT auth middleware
+
+        go get github.com/dgrijalva/jwt-go
+
+Use [JWT](https://jwt.io) to generate a JWT token
+
+Algorithm: HS512
+
+  Header: Algorithm & token type
+
+        {
+          "alg": "HS512",
+          "typ": "JWT"
+        }
+
+  Payload: DATA
+
+        {
+          "sub": "1234567890",
+          "name": "John Doe",
+          "iat": 1516239022
+        }
+
+  Verify signature
+
+        HMACSHA512(
+          base64UrlEncode(header) + "." +
+          base64UrlEncode(paylaod),
+          missionimpossible
+        )
+
+  token
+
+eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.gKF3xmqVhxwnbKxDdBby1iCUXsKEsMc9UUYel-tk3Do6gOpthLdggBvTuaCTTvu__9d9S3uESxtl3QSEotRlzA
+
+  test:
+
+        curl --location --request POST 'http://localhost:8080/api/v1/comment' -v \
+        --header 'Content-Type: application/json' \
+        --header 'Authorization: bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.gKF3xmqVhxwnbKxDdBby1iCUXsKEsMc9UUYel-tk3Do6gOpthLdggBvTuaCTTvu__9d9S3uESxtl3QSEotRlzA' \
+        --data-raw '{
+                "slug": "hello",
+                "body": "body",
+                "author": "me"
+        }'
+
