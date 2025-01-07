@@ -3,6 +3,7 @@ module github.com/yonyu/go-webapi
 go 1.23.3
 
 require (
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/go-playground/validator/v10 v10.23.0
 	github.com/go-resty/resty/v2 v2.16.2
 	github.com/golang-migrate/migrate/v4 v4.18.1

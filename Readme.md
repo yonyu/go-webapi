@@ -302,4 +302,6 @@ To test
     modify Taskfile.yml
     go get github.com/go-resty/resty/v2
 
+    go get github.com/dgrijalva/jwt-go
+
     task acceptance-tests
