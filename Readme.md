@@ -296,3 +296,10 @@ To test
 
     task integration-test
 
+### Acceptance tests
+
+    create go-webapi/tests/health_test.go
+    modify Taskfile.yml
+    go get github.com/go-resty/resty/v2
+
+    task acceptance-tests
