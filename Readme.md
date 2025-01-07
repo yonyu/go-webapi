@@ -305,3 +305,7 @@ To test
     go get github.com/dgrijalva/jwt-go
 
     task acceptance-tests
+
+## CI/CD with [CircleCI](https://circleci.com/)
+
+  Create go-webapi/.circle/config.yml
